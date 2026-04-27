@@ -1,6 +1,10 @@
 package fr.univ_amu.iut.exercice5;
 
 import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -27,9 +31,11 @@ public class EvenementsBouton extends Application {
     // Les trois font exactement la même chose ; choisis-en un et laisse les
     // autres en commentaire pour pouvoir les comparer visuellement.
     //
-    //   Compteur compteur = new Compteur();
-    //   Label labelCompteur = new Label("0 clics");
-    //   Button bouton = new Button("Clique-moi");
+    Compteur compteur = new Compteur();
+    Label labelCompteur = new Label("0 clics");
+    labelCompteur.setId("compteur");
+    Button bouton = new Button("Clique-moi");
+    bouton.setId("bouton-clique-moi");
     //
     //   // --- Style 1 : classe nommée (style "historique") ---------------
     //   // bouton.setOnAction(new EcouteurClasseNommee(compteur));
@@ -44,12 +50,17 @@ public class EvenementsBouton extends Application {
     //   //     labelCompteur.setText(compteur.getValeur() + " clics");
     //   //   }
     //   // });
-    //
-    //   // --- Style 3 : lambda (moderne, recommandé) ---------------------
-    //   // bouton.setOnAction(e -> {
-    //   //   compteur.incrementer();
-    //   //   labelCompteur.setText(compteur.getValeur() + " clics");
-    //   // });
+    // --- Style 3 : lambda (moderne, recommandé) ---------------------
+    bouton.setOnAction(
+        e -> {
+          compteur.incrementer();
+          labelCompteur.setText(compteur.getValeur() + " clics");
+        });
+    VBox root = new VBox();
+    Scene scene = new Scene(root);
+    primaryStage.setScene(scene);
+    root.getChildren().addAll(bouton, labelCompteur);
+    primaryStage.show();
   }
 
   public static void main(String[] args) {
