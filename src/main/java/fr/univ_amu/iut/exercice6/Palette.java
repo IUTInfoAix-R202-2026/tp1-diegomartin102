@@ -1,6 +1,10 @@
 package fr.univ_amu.iut.exercice6;
 
 import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 /**
@@ -44,22 +48,38 @@ public class Palette extends Application {
     // 1. Créer un BorderPane comme racine.
     //
     // 2. Top : un HBox avec trois boutons "Rouge", "Vert", "Bleu".
-    //    Donne-leur les ids "btn-rouge", "btn-vert", "btn-bleu" - les tests
-    //    les retrouvent via robot.lookup("#btn-rouge") etc.
+    // Donne-leur les ids "btn-rouge", "btn-vert", "btn-bleu" - les tests
+    // les retrouvent via robot.lookup("#btn-rouge") etc.
     //
     // 3. Center : un Pane avec l'id "zone", taille minimale 300×200.
-    //    Change sa couleur via setStyle("-fx-background-color: red;") etc.
+    // Change sa couleur via setStyle("-fx-background-color: red;") etc.
     //
     // 4. Bottom : un Label avec l'id "compteurs", texte initial
-    //    "Rouge: 0  Vert: 0  Bleu: 0".
+    // "Rouge: 0 Vert: 0 Bleu: 0".
     //
     // 5. Trois entiers compteur_rouge, compteur_vert, compteur_bleu
-    //    (ou trois variables d'instance). Chaque clic incrémente le bon
-    //    compteur et reformate le texte du label.
+    // (ou trois variables d'instance). Chaque clic incrémente le bon
+    // compteur et reformate le texte du label.
     //
     // 6. Attention au format du texte du label : les tests vérifient la
-    //    présence exacte des substrings "Rouge: 2", "Vert: 0", "Bleu: 1"
-    //    après une séquence de clics.
+    // présence exacte des substrings "Rouge: 2", "Vert: 0", "Bleu: 1"
+    // après une séquence de clics.
+    BorderPane root = new BorderPane();
+    Scene scene = new Scene(root);
+
+    Button boutonR = new Button("Rouge");
+    boutonR.setId("btn-rouge");
+    Button boutonB = new Button("Bleu");
+    boutonB.setId("btn-bleu");
+    Button boutonV = new Button("Vert");
+    boutonV.setId("btn-vert");
+
+    HBox box = new HBox();
+    root.setTop(box);
+    box.getChildren().addAll(boutonB, boutonR, boutonV);
+
+    primaryStage.setScene(scene);
+    primaryStage.show();
   }
 
   public static void main(String[] args) {

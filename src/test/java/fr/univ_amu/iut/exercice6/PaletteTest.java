@@ -29,7 +29,6 @@ class PaletteTest {
 
   // --- Étape 1 : afficher la fenêtre ---
 
-  @Disabled("Retire cette annotation pour activer le test")
   @Test
   void laFenetreEstVisible(FxRobot robot) {
     assertThat(stage.isShowing())
@@ -39,7 +38,6 @@ class PaletteTest {
 
   // --- Étape 2 : créer une Scene ---
 
-  @Disabled("Retire cette annotation pour activer le test")
   @Test
   void laSceneExiste(FxRobot robot) {
     assertThat(stage.getScene())
@@ -57,7 +55,6 @@ class PaletteTest {
 
   // --- Étape 3 : ajouter les trois boutons ---
 
-  @Disabled("Retire cette annotation pour activer le test")
   @Test
   void lesTroisBoutonsExistent(FxRobot robot) {
     Button btnRouge = robot.lookup("#btn-rouge").queryAs(Button.class);
