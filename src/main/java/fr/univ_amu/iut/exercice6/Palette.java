@@ -3,8 +3,10 @@ package fr.univ_amu.iut.exercice6;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 /**
@@ -38,6 +40,9 @@ import javafx.stage.Stage;
  * "Bleu".
  */
 public class Palette extends Application {
+  int compteurR = 0;
+  int compteurB = 0;
+  int compteurV = 0;
 
   @Override
   public void start(Stage primaryStage) {
@@ -64,6 +69,7 @@ public class Palette extends Application {
     // 6. Attention au format du texte du label : les tests vérifient la
     // présence exacte des substrings "Rouge: 2", "Vert: 0", "Bleu: 1"
     // après une séquence de clics.
+
     BorderPane root = new BorderPane();
     Scene scene = new Scene(root);
 
@@ -77,6 +83,33 @@ public class Palette extends Application {
     HBox box = new HBox();
     root.setTop(box);
     box.getChildren().addAll(boutonB, boutonR, boutonV);
+
+    Pane pane = new Pane();
+    pane.setId("zone");
+    root.setCenter(pane);
+
+    Label label = new Label("Rouge: 0  Vert: 0  Bleu: 0");
+    label.setId("compteurs");
+    root.setBottom(label);
+
+    boutonR.setOnAction(
+        e -> {
+          compteurR++;
+          pane.setStyle("-fx-background-color: red;");
+          label.setText("Rouge: " + compteurR + " Vert: " + compteurV + " Bleu: " + compteurB);
+        });
+    boutonV.setOnAction(
+        e -> {
+          compteurV++;
+          pane.setStyle("-fx-background-color: green;");
+          label.setText("Rouge: " + compteurR + " Vert: " + compteurV + " Bleu: " + compteurB);
+        });
+    boutonB.setOnAction(
+        e -> {
+          compteurB++;
+          pane.setStyle("-fx-background-color: blue;");
+          label.setText("Rouge: " + compteurR + " Vert: " + compteurV + " Bleu: " + compteurB);
+        });
 
     primaryStage.setScene(scene);
     primaryStage.show();
